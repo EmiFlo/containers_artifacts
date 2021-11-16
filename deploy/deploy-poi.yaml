@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poi-deployment
+  namespace: tripinsights
+  labels:
+    app: poi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poi
+  template:
+    metadata:
+      labels:
+        app: poi
+    spec:
+      containers:
+      - name: poi
+        image: registryvpg9012.azurecr.io/tripinsights/poi:1.0
+        env:
+        - name: SQL_USER 
+          value: "<user>"
+        - name: SQL_PASSWORD
+          value: "<password>"
+        - name: SQL_SERVER
+          value: "sqlservervpg9012.database.windows.net"
+        - name: SQL_DBNAME
+          value: "mydrivingDB"
+        ports:
+        - containerPort: 80
