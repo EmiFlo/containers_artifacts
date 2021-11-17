@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: userprofile-deployment
-  namespace: tripinsights
+  namespace: api
   labels:
     app: userprofile
 spec:
