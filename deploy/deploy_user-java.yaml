@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: poi-deployment
+  name: user-java-deployment
   namespace: tripinsights
   labels:
-    app: poi
+    app: user-java
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: poi
+      app: user-java
   template:
     metadata:
       labels:
-        app: poi
+        app: user-java
     spec:
       containers:
-        - name: poi
-          image: registryvpg9012.azurecr.io/tripinsights/poi:1.0
+        - name: user-java
+          image: registryvpg9012.azurecr.io/tripinsights/user-java:1.0
           volumeMounts:
             - mountPath: "/secrets"
               name: dbsecrets
