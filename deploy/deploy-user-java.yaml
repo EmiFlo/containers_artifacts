@@ -26,12 +26,8 @@ spec:
             - containerPort: 80
       volumes:
         - name: dbsecrets
-          secret:
-            secretName: db-secrets
-            items:
-              - key: SQL.SERVER
-                path: SQL_SERVER
-              - key: SQL.USER
-                path: SQL_USER
-              - key: SQL.PASSWORD
-                path: SQL_PASSWORD
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "azure-team3kv-user-msi"
